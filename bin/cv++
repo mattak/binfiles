@@ -1,0 +1,6 @@
+#!/bin/sh
+OPENCV_LIB=`ls /usr/local/lib/ | grep libopencv_ | perl -pne 's/lib(opencv_[^\.]+)\..+$/-l$1/g' | uniq | awk '{printf $0" "}'`
+OPENCV_INC="-I/usr/local/include -I/usr/local/include/opencv"
+
+c++ $* $OPENCV_INC $OPENCV_LIB
+
